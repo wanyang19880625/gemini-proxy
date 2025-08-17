@@ -74,7 +74,7 @@ export default async (request: Request, context: Context) => {
     duplex: "half"
   });
 
-  console.log(response.headers)
+  console.log(response.body)
   const responseHeaders = {
     ...CORS_HEADERS,
     ...Object.fromEntries(response.headers),
