@@ -4,6 +4,7 @@
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Headers = "*"
     Access-Control-Allow-Methods = "*"
+    Content-Encoding = "identity"
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/proxy"
