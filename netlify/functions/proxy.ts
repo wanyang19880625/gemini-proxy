@@ -63,9 +63,9 @@ export default async (request: Request, context: Context) => {
     url.searchParams.append(key, value);
   });
 
-  // const headers = pickHeaders(request.headers, ["content-type", "authorization", "x-goog-api-client", "x-goog-api-key", "accept-encoding"]);
+  const headers = pickHeaders(request.headers, ["content-type", "authorization", "x-goog-api-client", "x-goog-api-key", "accept-encoding"]);
   // vercel proxy headers
-  const headers = pickHeaders(request.headers, ["content-type", "x-goog-api-client", "x-goog-api-key"]);
+  // const headers = pickHeaders(request.headers, ["content-type", "x-goog-api-client", "x-goog-api-key"]);
 
   const response = await fetch(url, {
     body: request.body,
@@ -74,6 +74,7 @@ export default async (request: Request, context: Context) => {
     duplex: "half"
   });
 
+  response.headers.set("Content-Encoding", "identity");
   const responseHeaders = {
     ...CORS_HEADERS,
     ...Object.fromEntries(response.headers),
