@@ -74,7 +74,7 @@ export default async (request: Request, context: Context) => {
     duplex: "half"
   });
 
-  response.headers.set("Content-Encoding", "identity");
+  console.log(response.headers)
   const responseHeaders = {
     ...CORS_HEADERS,
     ...Object.fromEntries(response.headers),
