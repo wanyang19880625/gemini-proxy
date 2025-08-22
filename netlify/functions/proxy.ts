@@ -79,7 +79,7 @@ export default async (request: Request, context: Context) => {
     ...CORS_HEADERS,
     ...Object.fromEntries(response.headers),
   };
-
+  console.log(responseHeaders)
   return new Response(response.body, {
     headers: responseHeaders,
     status: response.status
