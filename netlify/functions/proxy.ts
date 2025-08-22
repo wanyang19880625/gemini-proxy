@@ -79,6 +79,7 @@ export default async (request: Request, context: Context) => {
     ...CORS_HEADERS,
     ...Object.fromEntries(response.headers),
   };
+  responseHeaders["Content-Encoding"]="identity"
   console.log(responseHeaders)
   return new Response(response.body, {
     headers: responseHeaders,
