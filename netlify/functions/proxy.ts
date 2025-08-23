@@ -55,7 +55,7 @@ export default async (request: Request, context: Context) => {
       },
     });
   }
-
+  console.log("pathname:" + pathname)
   const url = new URL(pathname, "https://generativelanguage.googleapis.com");
   searchParams.delete("_path");
 
@@ -74,13 +74,14 @@ export default async (request: Request, context: Context) => {
     duplex: "half"
   });
 
-  console.log(response.body)
   const responseHeaders = {
     ...CORS_HEADERS,
     ...Object.fromEntries(response.headers),
   };
+  // fix netlify header parse problem
   responseHeaders["content-encoding"]="identity"
   console.log(responseHeaders)
+  
   return new Response(response.body, {
     headers: responseHeaders,
     status: response.status
